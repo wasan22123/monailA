@@ -63,9 +63,13 @@ public class MainActivity3 extends AppCompatActivity {
             startActivity(intent);
         });
 
+        binding.button18.setOnClickListener(view -> {
+            var intent = new Intent(this, SubActivity.class);
+            getActivityResult.launch(intent);
+        });
 
 
-        binding.button10.setOnClickListener(view -> {
+        binding.button19.setOnClickListener(view -> {
             var intent = new Intent(this, SubActivity.class);
             intent.putExtra("text", binding.textView3.getText().toString());
             startActivity(intent);
