@@ -20,24 +20,25 @@ public class MainActivity3 extends AppCompatActivity {
 
     private ActivityMain3Binding binding;
     private final ActivityResultLauncher<Intent> getActivityResult = registerForActivityResult(
-
-        new ActivityResultContracts.StartActivityForResult(),
-        result -> {
-            switch (result.getResultCode()) {
-                case RESULT_OK:
-                    Optional.ofNullable(result.getData())
-                            .map(data -> data.getStringExtra("ret"))
-                            .map(text -> "Result: " + text)
-                            .ifPresent(text -> binding.editTextText.setText(text));
-                    break;
-                case RESULT_CANCELED:
-                    binding.editTextText.setText("Result: Canceled");
-                    break;
-                default:
-                    binding.editTextText.setText("Result: Unknown(" + result.getResultCode() + ")");
-                    break;
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                switch (result.getResultCode()) {
+                    case RESULT_OK:
+                        Optional.ofNullable(result.getData())
+                                .map(data -> data.getStringExtra("ret"))
+                                .map(text -> "Result: " + text)
+                                .ifPresent(text -> binding.editTextText.setText(text));
+                        break;
+                    case RESULT_CANCELED:
+                        binding.editTextText.setText("Result: Canceled");
+                        break;
+                    default:
+                        binding.editTextText.setText("Result: Unknown(" + result.getResultCode() + ")");
+                        break;
+                }
             }
-        }
+    );
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
